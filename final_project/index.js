@@ -48,9 +48,10 @@ app.use("/customer/auth/*", function auth(req,res,next){
         }
 
         // Verify JWT token
-        const jwtSecret = process.env.JWT_SECRET || 'your-jwt-secret-key';
+        const jwtSecret = process.env.JWT_SECRET || '1234';
         jwt.verify(accessToken, jwtSecret, (err, user) => {
             if (err) {
+                   console.log(err);
                 return res.status(403).json({
                     message: "Authentication failed. Invalid or expired token."
                 });
